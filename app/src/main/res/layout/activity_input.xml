@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".InputActivity">
+
+    <EditText
+        android:id="@+id/inputTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:hint="Title" />
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="10dp"
+        android:background="?android:attr/listDivider"
+        android:visibility="visible" />
+
+    <EditText
+        android:id="@+id/inputText"
+        android:layout_width="match_parent"
+        android:layout_height="259dp"
+        android:gravity="top"
+        android:hint="Write something about your day here!"
+        android:padding="10dp" />
+
+    <View
+        android:id="@+id/divider2"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="?android:attr/listDivider"
+        android:visibility="visible" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="112dp"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/cryButton"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:backgroundTint="@color/colorPrimary"
+            android:onClick="cryClicked"
+            android:padding="10dp"
+            android:scaleType="fitCenter"
+            app:srcCompat="@drawable/crying" />
+
+        <ImageButton
+            android:id="@+id/sadButton"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:backgroundTint="@color/colorPrimary"
+            android:onClick="sadClicked"
+            android:padding="10dp"
+            android:scaleType="fitCenter"
+            app:srcCompat="@drawable/anxious" />
+
+        <ImageButton
+            android:id="@+id/happyButton"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:backgroundTint="@color/colorPrimary"
+            android:onClick="happyClicked"
+            android:padding="10dp"
+            android:scaleType="fitCenter"
+            app:srcCompat="@drawable/thumb_up" />
+
+        <ImageButton
+            android:id="@+id/laughButton"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:backgroundTint="@color/colorPrimary"
+            android:onClick="laughClicked"
+            android:padding="10dp"
+            android:scaleType="fitCenter"
+            app:srcCompat="@drawable/laugh" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/submitButton"
+        android:layout_width="wrap_content"
+        android:layout_height="66dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="4dp"
+        android:backgroundTint="@color/colorPrimary"
+        android:onClick="addEntry"
+        android:text="Submit entry!"
+        android:textColor="@android:color/white"
+        android:textSize="24sp" />
+</LinearLayout>
