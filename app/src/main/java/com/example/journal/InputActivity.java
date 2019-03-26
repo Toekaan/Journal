@@ -21,14 +21,12 @@ public class InputActivity extends AppCompatActivity {
 
     private String mood = "";
 
-    // define buttons
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_input);
     }
+
     // decide mood based on button press
     public void laughClicked(View view) {
         mood = "laugh";
@@ -87,30 +85,25 @@ public class InputActivity extends AppCompatActivity {
         EditText userTitle = findViewById(R.id.inputTitle);
         String title = userTitle.getText().toString();
         EditText userContent = findViewById(R.id.inputText);
-        // check if user has filled in any information at all
-        if (title.equals("")){
-            return;
-        }
-        else if (mood.equals("")) {
-            // do not allow user to continue without mood selection
-            return;
-        }
-        else if (userContent.equals("")){
 
+        // check if user has filled in any information at all
+        if (title.equals("") || mood.equals("") || userContent.equals("")){
+            return;
         }
-        String content = userContent.getText().toString();
-        JournalEntry entry = new JournalEntry(title, content, mood);
-        EntryDatabase ed = EntryDatabase.getInstance(this);
-        /*entry.setTitle((String) title.getText());
-        entry.setContent((String) content.getText());*/
-        ed.insert(entry);
-        Intent intent = new Intent(InputActivity.this, MainActivity.class);
-        startActivity(intent);
+        else {
+            String content = userContent.getText().toString();
+            JournalEntry entry = new JournalEntry(title, content, mood);
+            EntryDatabase ed = EntryDatabase.getInstance(this);
+            ed.insert(entry);
+            Intent intent = new Intent(InputActivity.this, MainActivity.class);
+            startActivity(intent);
+        }
     }
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
+
         // save all important data to be restored later
         TextView content = findViewById(R.id.inputText);
         String savedContent = content.getText().toString();
@@ -119,13 +112,11 @@ public class InputActivity extends AppCompatActivity {
         String savedTitle = title.getText().toString();
         outState.putString("savedTitle", savedTitle);
         outState.putString("savedMood", mood);
-
     }
 
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
-
 
         // set title and content
         TextView title = findViewById(R.id.inputTitle);
@@ -136,6 +127,7 @@ public class InputActivity extends AppCompatActivity {
         // set visible indication of selected button
         mood = savedInstanceState.getString("savedMood");
 
+        // decide which mood icon to highlight based on current mood
         ImageButton laugh = findViewById(R.id.laughButton);
         ImageButton happy = findViewById(R.id.happyButton);
         ImageButton sad = findViewById(R.id.sadButton);

@@ -25,7 +25,6 @@ public class EntryDatabase extends SQLiteOpenHelper {
 
     private EntryDatabase(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
-
     }
 
     @Override
@@ -47,9 +46,9 @@ public class EntryDatabase extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + "entries");
         onCreate(db);
     }
+
     public Cursor selectAll(){
         return getWritableDatabase().rawQuery("SELECT * FROM entries", null);
-
     }
 
     public void insert(JournalEntry je){
@@ -59,8 +58,8 @@ public class EntryDatabase extends SQLiteOpenHelper {
         cv.put("content", je.getContent());
         cv.put("mood", je.getMood());
         getWritableDatabase().insert("entries", null, cv);
-
     }
+
     public void delete(long id){
         /*SQLiteDatabase db = this.getWritableDatabase();
         db.delete("entries", "id = ?", long[]{id});*/
